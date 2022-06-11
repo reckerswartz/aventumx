@@ -1,0 +1,23 @@
+EnableDefaultLinters: true
+glob: "**/*.{html,text,js}{+*,}.erb"
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+linters:
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      Style/FrozenStringLiteralComment:
+        Enabled: false
+      Layout/HashAlignment:
+        Enabled: false
+      Layout/ParameterAlignment:
+        Enabled: false
+      Layout/IndentationWidth:
+        Enabled: false
+      Layout/TrailingEmptyLines:
+        Enabled: false
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/LineLength:
+        Enabled: false
