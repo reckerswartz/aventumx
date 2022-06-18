@@ -1,0 +1,14 @@
+@import 'variable';
+$input-line-height-sm: $input-line-height;
+$input-line-height-md: $line-height-lg;
+$input-line-height-lg: $input-line-height;
+$input-padding-y: 0.725rem;
+$input-bg: $white;
+
+@import '@tkrotoff/bootstrap-floating-label/src/bootstrap-floating-label';
+
+input[type="checkbox"] {
+  -moz-appearance: none !important;
+  width: 22px;
+  height: 22px;
+}

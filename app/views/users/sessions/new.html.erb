@@ -1,0 +1,94 @@
+<div class="users-session-new background-size-cover text-black p-6 vh-100">
+  <div class="container pt-6">
+    <div class="row">
+      <div class="col-lg-7 col-12 text-center text-white">
+        <div class="p-3 mb-5">
+          <%= image_tag 'favicon/android-chrome-192x192.png' %>
+        </div>
+      </div>
+      <div class="col-lg-5 col-12 shadow p-3 mb-5 bg-white rounded-3 position-relative">
+        <div class="p-5 mx-auto w-100">
+          <h2 class="text-center text-gun-powder font-size-26 fw-bold">Account Login</h2>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), validate: true, class: 'needs-validation') do |f| %>
+            <div class="floating-label mt-5">
+              <%= f.text_field :email, autocomplete: 'email', class: 'form-control lh-lg bg-white mt-3 rounded-1', placeholder: 'name@example.com' %>
+              <%= f.label :email, 'Username or Email address', class: 'text-logan' %>
+            </div>
+            <div class="floating-label mt-4 mb-2">
+              <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control lh-lg bg-white mt-3 rounded-1', placeholder: '************', validate: { presence: true } %>
+              <%= f.label :password, class: 'text-logan' %>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-12 col-12">
+                <div class="text-md-start text-center">
+                  <% if devise_mapping.rememberable? %>
+                    <div class="form-check d-inline-block">
+                      <%= f.check_box :remember_me, class: 'form-check-input' %>
+                      <%= f.label :remember_me, class: 'form-check-label font-size-14 text-gun-powder fw-bold ms-3 mt-1' %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-12">
+                <div class="text-lg-end text-md-start text-center font-size-14 pt-1">
+                  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                    <%= link_to 'Forgot your password?', new_password_path(resource_name), class: 'font-size-14 fw-bold mt-1 text-sm-center' %><br>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="actions my-4">
+              <%= f.submit 'Login to your Account!', class: 'btn btn-lg btn-cornflower-blue rounded-2 w-100' %>
+            </div>
+            <div class="row text-logan">
+              <div class="col-3"><hr></div>
+              <div class="col-6 font-size-12 text-gun-powder text-center pt-2 fw-bold">Login with your Social Account</div>
+              <div class="col-3"><hr></div>
+            </div>
+          <% end %>
+          <div class="social-links text-center my-2">
+            <!-- SOCIAL LINK -->
+            <a class="social-link facebook mx-2" href="#">
+              <!-- ICON FACEBOOK -->
+              <i class="fab fa-facebook-square fa-3x"></i>
+              <!-- /ICON FACEBOOK -->
+            </a>
+            <!-- /SOCIAL LINK -->
+
+            <!-- SOCIAL LINK -->
+            <a class="social-link twitter mx-2" href="#">
+              <!-- ICON TWITTER -->
+              <i class="fab fa-twitter-square fa-3x"></i>
+              <!-- /ICON TWITTER -->
+            </a>
+            <!-- /SOCIAL LINK -->
+
+            <!-- SOCIAL LINK -->
+            <a class="social-link google mx-2" href="#">
+              <!-- ICON TWITCH -->
+              <i class="fab fa-google fa-3x"></i>
+              <!-- /ICON TWITCH -->
+            </a>
+            <!-- /SOCIAL LINK -->
+
+            <!-- SOCIAL LINK -->
+            <a class="social-link linkedin mx-2" href="#">
+              <!-- ICON YOUTUBE -->
+              <i class="fab fa-linkedin fa-3x"></i>
+              <!-- /ICON YOUTUBE -->
+            </a>
+            <!-- /SOCIAL LINK -->
+          </div>
+          <div class="row text-logan">
+            <div class="col-4"><hr></div>
+            <div class="col-4 font-size-12 text-gun-powder text-center pt-2 fw-bold">Other</div>
+            <div class="col-4"><hr></div>
+          </div>
+        </div>
+        <div class="topleft"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

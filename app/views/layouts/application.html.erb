@@ -1,16 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Aventumx</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- ===============================================-->
+  <!--    Document Title-->
+  <!-- ===============================================-->
+  <%= display_meta_tags site: ' | ' %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+  <!-- ===============================================-->
+  <!--    Favicons-->
+  <!-- ===============================================-->
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path 'favicon/apple-touch-icon.png' %>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_path 'favicon/favicon-32x32.png' %>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= asset_path 'favicon/favicon-16x16.png' %>">
+  <link rel="manifest" href="<%= asset_path 'favicon/site.webmanifest' %>">
+  <link rel="mask-icon" href="<%= asset_path 'favicon/safari-pinned-tab.svg' %>" color="#603cba">
+  <link rel="shortcut icon" href="<%= asset_path 'favicon/favicon.ico' %>">
+  <meta name="apple-mobile-web-app-title" content="AventumX">
+  <meta name="application-name" content="AventumX">
+  <meta name="msapplication-TileColor" content="#603cba">
+  <meta name="theme-color" content="#603cba">
 
-  <body>
-    <%= yield %>
-  </body>
+  <!-- ===============================================-->
+  <!--  End  Favicons-->
+  <!-- ===============================================-->
+
+  <!-- ===============================================-->
+  <!--    Tweeter-->
+  <!-- ===============================================-->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@">
+  <meta property="og:title" content="">
+
+  <!-- ===============================================-->
+  <!--    OG-->
+  <!-- ===============================================-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="<%= asset_url 'favicon/android-chrome-512x512.png' %>">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="">
+
+  <!-- ===============================================-->
+  <!--    csrf_meta-->
+  <!-- ===============================================-->
+  <%= csrf_meta_tags %>
+
+  <!-- ===============================================-->
+  <!--    csp_meta-->
+  <!-- ===============================================-->
+  <%= csp_meta_tag %>
+
+  <!-- ===============================================-->
+  <!--    stylesheet-->
+  <!-- ===============================================-->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+
+  <!-- ===============================================-->
+  <!--    javascript-->
+  <!-- ===============================================-->
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true, nonce: true %>
+
+</head>
+
+<body class="h-100 <%= content_for :body_class %>">
+
+<%= render partial: 'layouts/partials/header/header' %>
+<%= render partial: 'layouts/partials/sidebar/sidebar' if user_signed_in? %>
+
+<!--**********************************
+        Main wrapper start
+***********************************-->
+<div id='toast-content' aria-live='polite' aria-atomic='true' class='bg-dark position-relative' data-toast-notice="Notice" data-toast-alert="Alert">
+  <div id="toast-container" class='toast-container position-fixed bottom-0 end-0 p-3'>
+
+  </div>
+</div>
+<main class="page-content h-100">
+  <!--**********************************
+        breadcrumb start
+  ***********************************-->
+  <% if breadcrumb_trail.present? && breadcrumb_trail.count.positive? %>
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <% breadcrumb_trail do |crumb| %>
+            <li class="breadcrumb-item <%= crumb.current? ? 'active' : '' %>">
+              <%= link_to_unless crumb.current?, crumb.name, crumb.url, (crumb.current? ? { 'aria-current' => 'page' } : {}) %>
+            </li>
+          <% end %>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
+  <%= yield %>
+</main>
+<!--**********************************
+        Main wrapper end
+***********************************-->
+</body>
 </html>

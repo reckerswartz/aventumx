@@ -1,0 +1,117 @@
+// scss-docs-start color-variables
+$mirage:          #1d2333;
+$mirage-darker:   #161b28;
+$cornflower-blue: #615dfa;
+$oxford-blue:     #3f485f;
+$emerald:         #40d04f;
+$screamin_green:  #4ff461;
+$wild_watermelon: #ff5384;
+$tango:           #f47c20;
+$downy:           #6eccb2;
+$dove-gray:       #636363;
+$gun-powder:      #3e3f5e;
+$logan:           #adafca;
+$robin-egg-blue:  #00c7d9;
+$whisper:         #f8f8fb;
+$white:           #ffffff;
+$black:           #000000;
+$gray-500:        #9e9e9e;
+$indigo:          #3d4fc4;
+$punch:           #dc3545;
+// scss-docs-end color-variables
+
+// scss-docs-start colors-map
+$colors: (
+  "mirage":           $mirage,
+  "mirage-darker":    $mirage-darker,
+  "cornflower-blue":  $cornflower-blue,
+  "oxford-blue":      $oxford-blue,
+  "emerald":          $emerald,
+  "screamin_green":   $screamin_green,
+  "wild_watermelon":  $wild_watermelon,
+  "tango":            $tango,
+  "downy":            $downy,
+  "dove-gray":        $dove-gray,
+  "gun-powder":       $gun-powder,
+  'logan':            $logan,
+  "robin-egg-blue":   $robin-egg-blue,
+  "whisper":          $whisper,
+  "indigo":          $indigo,
+  "punch":           $punch,
+);
+// scss-docs-end colors-map
+
+// Color system
+
+// Body
+//
+// Settings for the `<body>` element.
+$body-bg:                   $whisper;
+$body-color:                $black;
+$body-text-align: centre;
+
+//////Header/////
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "mirage": $mirage, "cornflower-blue": $cornflower-blue, "black": $black, "oxford-blue": $oxford-blue,
+  "emerald": $emerald,"white": $white, "wild_watermelon": $wild_watermelon, "logan": $logan,
+  "robin-egg-blue": $robin-egg-blue, "gun-powder": $gun-powder, "indigo": $indigo, "punch": $punch,
+);
+
+// where your navbar
+$navbar-nav-link-padding-x: 1.5rem;
+$navbar-light-color: $black;
+$navbar-light-hover-color: $gray-500;
+$navbar-padding-y: 0.5rem;
+$navbar-padding-x: 0;
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-active-color: $black;
+
+$navbar-dark-color: rgba(255, 255, 255, 0.5);
+$navbar-dark-hover-color: $white;
+$navbar-dark-active-color: $white;
+
+// nav
+
+// Dropdown
+$dropdown-bg: $mirage;
+$dropdown-color: $emerald;
+$dropdown-font-size: 0.75rem;
+$dropdown-padding-y: 6px;
+$dropdown-border-radius: 10px;
+$dropdown-box-shadow: 3px 5px 40px 0 rgba(0, 0, 0, 0.06);
+$dropdown-border-color: transparent;
+$dropdown-border-width: 0;
+$dropdown-color: $white;
+$dropdown-link-color: $white;
+$dropdown-link-hover-color: $emerald;
+$dropdown-link-hover-bg: $mirage;
+$dropdown-link-active-color: $screamin_green;
+$dropdown-link-active-bg:  $mirage-darker;
+
+// border
+//
+$border-radius-lg: 1rem;
+
+$form-check-input-checked-bg-color: $emerald;
+$form-check-input-checked-border-color: $oxford-blue;
+$form-check-input-bg: transparent;
+$form-check-input-border: $oxford-blue 1px solid;
+$form-check-input-focus-border: $cornflower-blue 1px solid;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba(97, 93, 250, 0.5);
+$input-focus-border-color: $cornflower-blue;
+// Links
+//
+// Style anchor elements.
+$link-color:  $logan;
+$link-hover-color: $robin-egg-blue;
+$link-hover-decoration: none;
+$link-decoration: none;
+
+// BreadCrumb
+$breadcrumb-divider: quote(">");
+
+// font-family
+$font-family-roboto: 'Roboto', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-base: $font-family-roboto;

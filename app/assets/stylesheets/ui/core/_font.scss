@@ -1,0 +1,72 @@
+@import '@fortawesome/fontawesome-svg-core/styles';
+
+$roboto-font-path: 'fonts' !default;
+@mixin roboto-font($folder, $variant, $type, $weight, $style) {
+
+  $font-full-path: '#{$roboto-font-path}/#{$folder}/#{$variant}';
+
+  @font-face {
+    font-family: '#{$variant}';
+    src: url('#{$font-full-path}-#{$type}.woff2') format('woff2'),
+    url('#{$font-full-path}-#{$type}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+  }
+
+  @font-face {
+    font-family: '#{$variant}-#{$type}';
+    src: url('#{$font-full-path}-#{$type}.woff2') format('woff2'),
+    url('#{$font-full-path}-#{$type}.woff') format('woff');
+  }
+}
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-regular";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-regular-italic";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-light";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-light-italic";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-thin";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-thin-italic";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-medium";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-medium-italic";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-bold";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-bold-italic";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-black";
+@import "roboto-fontface/css/roboto/sass/roboto-fontface-black-italic";
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.heading-underline::after {
+  content: '';
+  width: 100px;
+  height: 2px;
+  background: #000;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+// scss-docs-start font-sizes-map
+$font-sizes: (
+  "8", "10", "12", "14", "18","20", "24", "26","28", "40"
+);
+
+// Used to generate font-sizes
+@each $font-size in $font-sizes {
+  .font-size-#{$font-size} {
+    font-size: #{$font-size}px;
+  }
+}
+
+// scss-docs-start font-line-height
+$line-heights: (
+  "30"
+);
+
+// Used to generate font-line-height
+@each $line-height in $line-heights {
+  .line-height-#{$line-height} {
+    line-height: #{$line-height}px;
+  }
+}

@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-indigo">
+    <div class="container-fluid font-weight-bold">
+      <a class="navbar-brand" href="<%= root_path %>">
+        <%= image_tag 'favicon/mstile-150x150.png', size: '40*30', class: '' %>
+      </a>
+      <button class="navbar-toggler collapsed text-white-on-hover" type="button" data-bs-toggle="collapse" data-bs-target="#sidenav-left-full" aria-controls="sidenav-left-full" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-th-list fa-lg"></i>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item font-size-12">
+            <a class="nav-link <%= active_link_to_class(root_path, active: :exclusive) %>" href="<%= root_path %>">Home</a>
+          </li>
+          <li class="nav-item font-size-12">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item font-size-12">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item font-size-12">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to(new_user_session_path, class: "nav-link #{active_link_to_class(new_user_session_path, active: :exclusive)}") do %>
+              <i class="fas fa-sign-in-alt"></i> <span class="font-size-12">Login</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

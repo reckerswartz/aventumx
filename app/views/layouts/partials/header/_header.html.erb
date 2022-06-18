@@ -1,0 +1,5 @@
+<% if current_user.present? %>
+  <%= render 'layouts/partials/header/user' %>
+<% else %>
+  <%= render 'layouts/partials/header/default' %>
+<% end %>
