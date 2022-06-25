@@ -200,7 +200,7 @@ group :production, :staging, :development, :test do
   gem 'rails-i18n', '~> 7.0'
 
   # Use Redis adapter to run Action Cable in production
-  gem 'redis', '~> 4.5', '>= 4.5.1'
+  gem 'redis', '~> 4.7'
 
   # Roles library without any authorization enforcement
   # Read more: https://github.com/RolifyCommunity/rolify
