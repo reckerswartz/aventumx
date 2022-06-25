@@ -51,7 +51,7 @@ group :production, :staging, :development, :test do
 
   # Simple authorization solution for Rails. All permissions are stored in a single location.
   # Read more: https://github.com/CanCanCommunity/cancancan
-  gem 'cancancan', '~> 3.3'
+  gem 'cancancan', '~> 3.4'
 
   # Unobtrusive nested forms handling, using jQuery
   # Read more: http://github.com/nathanvda/cocoon
