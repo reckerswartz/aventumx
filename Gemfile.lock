@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail.git
-  revision: ab4f1199645f7593fa712c1c682d2208d8105b1f
+  revision: f7462ea7ea9b73d620859eebfd73dea172a6915e
   specs:
     paper_trail (12.3.0)
       activerecord (>= 5.2)
@@ -325,7 +325,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    minitest (5.15.0)
+    minitest (5.16.1)
     monetize (1.12.0)
       money (~> 6.12)
     money (6.16.0)
