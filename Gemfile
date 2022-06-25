@@ -51,7 +51,7 @@ group :production, :staging, :development, :test do
 
   # Simple authorization solution for Rails. All permissions are stored in a single location.
   # Read more: https://github.com/CanCanCommunity/cancancan
-  gem 'cancancan', '~> 3.3'
+  gem 'cancancan', '~> 3.4'
 
   # Unobtrusive nested forms handling, using jQuery
   # Read more: http://github.com/nathanvda/cocoon
@@ -200,7 +200,7 @@ group :production, :staging, :development, :test do
   gem 'rails-i18n', '~> 7.0'
 
   # Use Redis adapter to run Action Cable in production
-  gem 'redis', '~> 4.5', '>= 4.5.1'
+  gem 'redis', '~> 4.7'
 
   # Roles library without any authorization enforcement
   # Read more: https://github.com/RolifyCommunity/rolify
@@ -347,7 +347,7 @@ group :development do
   # Read more: https://docs.rubocop.org/
   gem 'rubocop', '~> 1.30', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
-  gem 'rubocop-rails', '~> 2.14'
+  gem 'rubocop-rails', '~> 2.15'
   gem 'rubocop-rspec', '~> 2.11', require: false
 
   # Shoulda Matchers provides RSpec- and Minitest-compatible

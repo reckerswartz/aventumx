@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail.git
-  revision: ab4f1199645f7593fa712c1c682d2208d8105b1f
+  revision: f7462ea7ea9b73d620859eebfd73dea172a6915e
   specs:
     paper_trail (12.3.0)
       activerecord (>= 5.2)
@@ -176,7 +176,7 @@ GEM
     bullet (7.0.2)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
-    cancancan (3.3.0)
+    cancancan (3.4.0)
     capistrano (3.17.0)
       airbrussh (>= 1.0.0)
       i18n
@@ -299,7 +299,7 @@ GEM
       character_set (~> 1.4)
       regexp_parser (~> 2.5)
       regexp_property_values (~> 1.0)
-    jsbundling-rails (1.0.2)
+    jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
     json (2.6.2)
     jwt (2.4.1)
@@ -325,7 +325,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    minitest (5.15.0)
+    minitest (5.16.1)
     monetize (1.12.0)
       money (~> 6.12)
     money (6.16.0)
@@ -433,8 +433,8 @@ GEM
       rack (>= 1.2.0)
     rack-protection (2.2.0)
       rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
+    rack-test (2.0.0)
+      rack (>= 1.3)
     rails (7.0.3)
       actioncable (= 7.0.3)
       actionmailbox (= 7.0.3)
@@ -486,7 +486,7 @@ GEM
     rbs (2.5.0)
     rbtree (0.4.5)
     rbtree3 (0.7.0)
-    redis (4.6.0)
+    redis (4.7.0)
     reek (6.1.1)
       kwalify (~> 0.7.0)
       parser (~> 3.1.0)
@@ -542,7 +542,7 @@ GEM
     rubocop-performance (1.14.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.14.2)
+    rubocop-rails (2.15.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -573,7 +573,7 @@ GEM
     sorted_set (1.0.3)
       rbtree
       set (~> 1.0)
-    sprockets (4.0.3)
+    sprockets (4.1.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.4.2)
@@ -610,7 +610,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (2.1.0)
+    unicode-display_width (2.2.0)
     uniform_notifier (1.16.0)
     valid_email2 (4.0.3)
       activemodel (>= 3.2)
@@ -626,7 +626,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yajl-ruby (1.4.3)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   x86_64-linux
@@ -646,7 +646,7 @@ DEPENDENCIES
   bootsnap (~> 1.12)
   brakeman (~> 5.2)
   bullet (~> 7.0)
-  cancancan (~> 3.3)
+  cancancan (~> 3.4)
   capistrano (~> 3.17)
   capistrano-passenger (~> 0.2.1)
   capistrano-rails (~> 1.6)
@@ -705,7 +705,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0)
   rails_best_practices (~> 1.23)
   rails_real_favicon (~> 0.1.1)
-  redis (~> 4.5, >= 4.5.1)
+  redis (~> 4.7)
   reek (~> 6.1)
   rolify (~> 6.0)
   rollups (~> 0.2.0)
@@ -713,7 +713,7 @@ DEPENDENCIES
   rspec-rails (~> 5.1)
   rubocop (~> 1.30)
   rubocop-performance (~> 1.14)
-  rubocop-rails (~> 2.14)
+  rubocop-rails (~> 2.15)
   rubocop-rspec (~> 2.11)
   ruby-vips (~> 2.1, >= 2.1.4)
   shoulda-matchers (~> 5.1)
