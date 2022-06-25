@@ -131,7 +131,7 @@ GEM
       safely_block (>= 0.2.1)
     airbrake (13.0.2)
       airbrake-ruby (~> 6.0)
-    airbrake-ruby (6.1.0)
+    airbrake-ruby (6.1.1)
       rbtree3 (~> 0.5)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
