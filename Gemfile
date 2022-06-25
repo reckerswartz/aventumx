@@ -14,6 +14,11 @@ group :production, :staging, :development, :test do
   # Read more: https://github.com/igorkasyanchuk/active_storage_validations
   gem 'active_storage_validations', '~> 0.9.8'
 
+  # Brings before_commit, after_commit, and after_rollback transactional
+  # callbacks outside of your ActiveRecord models
+  # Read more: https://github.com/Envek/after_commit_everywhere
+  gem 'after_commit_everywhere', '~> 1.2', '>= 1.2.2'
+
   # Simple, powerful, first-party analytics for Rails
   # Read more: https://github.com/ankane/ahoy
   gem 'ahoy_matey', '~> 4.0', '>= 4.0.3'
@@ -142,6 +147,13 @@ group :production, :staging, :development, :test do
   # Read more: https://github.com/basecamp/name_of_person
   gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 
+  # Facebook OAuth2 Strategy for OmniAuth
+  # Read more: https://github.com/simi/omniauth-facebook
+  gem 'omniauth-facebook', '~> 9.0'
+
+  # a mitigation against CVE-2015-9284
+  gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
+
   # Track changes to your rails models
   # Read more: http://github.com/airblade/paper_trail
   gem 'paper_trail', github: 'paper-trail-gem/paper_trail'
@@ -170,6 +182,10 @@ group :production, :staging, :development, :test do
   # Use Puma as the app server
   # Read more: http://puma.io/
   gem 'puma', '~> 5.6'
+
+  # Object oriented authorization for Rails applications
+  # Read more: https://github.com/varvet/pundit
+  gem 'pundit', '~> 2.2'
 
   # Ruby on Rails is a full-stack web framework optimized for programmer
   # happiness and sustainable productivity. It encourages beautiful code by

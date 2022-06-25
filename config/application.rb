@@ -47,6 +47,10 @@ module Aventumx
 
     # use sidekiq for ActiveJob
     config.active_job.queue_adapter = :sidekiq
+
+    ## config available locales
+    config.i18n.available_locales = %i[en es jp hi]
+
     # ...
     config.i18n.default_locale = :en
   end

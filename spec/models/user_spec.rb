@@ -28,7 +28,9 @@
 #  last_name                     :string           default(""), not null
 #  last_sign_in_at               :datetime
 #  last_sign_in_ip               :inet
+#  locale_code                   :string           default("en"), not null
 #  locked_at                     :datetime
+#  online_status                 :integer          default("offline"), not null
 #  paranoid_verification_attempt :integer          default(0)
 #  paranoid_verification_code    :string
 #  paranoid_verified_at          :datetime

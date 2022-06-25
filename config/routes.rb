@@ -3,6 +3,14 @@
 # == Route Map
 #
 #                                     Prefix Verb   URI Pattern                                                                                       Controller#Action
+#                            social_accounts GET    /social_accounts(.:format)                                                                        social_accounts#index
+#                                            POST   /social_accounts(.:format)                                                                        social_accounts#create
+#                         new_social_account GET    /social_accounts/new(.:format)                                                                    social_accounts#new
+#                        edit_social_account GET    /social_accounts/:id/edit(.:format)                                                               social_accounts#edit
+#                             social_account GET    /social_accounts/:id(.:format)                                                                    social_accounts#show
+#                                            PATCH  /social_accounts/:id(.:format)                                                                    social_accounts#update
+#                                            PUT    /social_accounts/:id(.:format)                                                                    social_accounts#update
+#                                            DELETE /social_accounts/:id(.:format)                                                                    social_accounts#destroy
 #                           new_user_session GET    /login(.:format)                                                                                  users/sessions#new
 #                               user_session POST   /login(.:format)                                                                                  users/sessions#create
 #                       destroy_user_session DELETE /logout(.:format)                                                                                 users/sessions#destroy
@@ -59,6 +67,7 @@
 #                       rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  resources :social_accounts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users,
              path: '',
@@ -85,4 +94,10 @@ Rails.application.routes.draw do
   end
   # Defines the root path route ("/")
   root to: 'dashboard#index'
+
+  # Route for Action Cable
+  # The route that action cable uses by default is ‘/cable’ endpoint.
+  # We will not need to explicitly specify our route to utilize our websocket connection.
+  # If you would like to explicitly define the action cable route:
+  # mount ActionCable.server => '/cable'
 end

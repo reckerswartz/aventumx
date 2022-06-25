@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Social accounts</h1>
+
+<div id="social_accounts">
+  <% @social_accounts.each do |social_account| %>
+    <%= render social_account %>
+    <p>
+      <%= link_to "Show this social account", social_account %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New social account", new_social_account_path %>

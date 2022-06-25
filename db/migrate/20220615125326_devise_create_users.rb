@@ -89,8 +89,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :slug
       t.index :slug, unique: true
 
+      ## locale_code
+      t.string :locale_code, default: 'en', null: false
+
       ## status
       t.integer :status, null: false, default: 0
+
+      ## online_status
+      t.integer :online_status, null: false, default: 0
     end
 
     add_index :users, :email, unique: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_15_125424) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -140,6 +140,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_125424) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
+  create_table "facebook_accounts", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.bigint "user_id", null: false
+    t.string "uid"
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_facebook_accounts_on_discarded_at"
+    t.index ["user_id"], name: "index_facebook_accounts_on_user_id"
+    t.index ["uuid_secure"], name: "index_facebook_accounts_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_facebook_accounts_on_uuid_token", unique: true
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -149,6 +163,48 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_125424) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "github_accounts", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.string "uid"
+    t.bigint "user_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_github_accounts_on_discarded_at"
+    t.index ["user_id"], name: "index_github_accounts_on_user_id"
+    t.index ["uuid_secure"], name: "index_github_accounts_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_github_accounts_on_uuid_token", unique: true
+  end
+
+  create_table "google_accounts", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.bigint "user_id", null: false
+    t.string "uid"
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_google_accounts_on_discarded_at"
+    t.index ["user_id"], name: "index_google_accounts_on_user_id"
+    t.index ["uuid_secure"], name: "index_google_accounts_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_google_accounts_on_uuid_token", unique: true
+  end
+
+  create_table "linkedin_accounts", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.bigint "user_id", null: false
+    t.string "uid"
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_linkedin_accounts_on_discarded_at"
+    t.index ["user_id"], name: "index_linkedin_accounts_on_user_id"
+    t.index ["uuid_secure"], name: "index_linkedin_accounts_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_linkedin_accounts_on_uuid_token", unique: true
   end
 
   create_table "old_passwords", force: :cascade do |t|
@@ -261,7 +317,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_125424) do
     t.integer "verification", default: 0, null: false
     t.string "time_zone", default: "UTC", null: false
     t.string "slug"
+    t.string "locale_code", default: "en", null: false
     t.integer "status", default: 0, null: false
+    t.integer "online_status", default: 0, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -313,4 +371,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_15_125424) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "facebook_accounts", "users"
+  add_foreign_key "github_accounts", "users"
+  add_foreign_key "google_accounts", "users"
+  add_foreign_key "linkedin_accounts", "users"
 end

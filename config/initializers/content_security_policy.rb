@@ -14,7 +14,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.script_src :self, :https
   ## enable hot reloading through ws for development
   if Rails.env.development?
-    policy.default_src :self, :https, 'http://localhost:3032/ws', 'ws://localhost:3032/ws'
+    policy.default_src :self, :https, 'http://localhost:3032/ws', 'ws://localhost:3032/ws', 'ws://localhost:3032/cable'
   else
     policy.default_src :self, :https
   end

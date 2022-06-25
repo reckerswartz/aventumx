@@ -28,7 +28,9 @@
 #  last_name                     :string           default(""), not null
 #  last_sign_in_at               :datetime
 #  last_sign_in_ip               :inet
+#  locale_code                   :string           default("en"), not null
 #  locked_at                     :datetime
+#  online_status                 :integer          default("offline"), not null
 #  paranoid_verification_attempt :integer          default(0)
 #  paranoid_verification_code    :string
 #  paranoid_verified_at          :datetime
@@ -78,6 +80,7 @@ class User < ApplicationRecord
   ### Includes and Extensions ##################################################
   rolify
   extend FriendlyId
+  include AASM
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -101,6 +104,7 @@ class User < ApplicationRecord
   enum gender: { draft: 0, male: 1, female: 2, non_gendered: 3 }, _suffix: true
   enum honorific: { draft: 0, master: 1, mx: 2, mr: 3, mrs: 4, miss: 5, ms: 6, sir: 7, dr: 8, cllr: 9 }, _suffix: true
   enum pronoun: { draft: 0, 'she/her': 1, 'he/him': 2, 'they/them': 3, 'ze/hir': 4 }, _suffix: true
+  enum online_status: { offline: 0, online: 1, away: 2, busy: 3, invisible: 4 }, _suffix: true
 
   ##############################################################################
   ### Callbacks ################################################################
@@ -137,7 +141,51 @@ class User < ApplicationRecord
   has_one_attached :totp_qr_code
   has_one :address, as: :addressable, dependent: :destroy_async
   has_one :phone_number, as: :phoneable, dependent: :destroy_async
-  has_many :payments, dependent: :destroy_async
+  has_one :facebook_account, class_name: 'Social::FacebookAccount', dependent: :destroy_async
+  has_one :google_account, class_name: 'Social::GoogleAccount', dependent: :destroy_async
+  has_one :github_account, class_name: 'Social::GithubAccount', dependent: :destroy_async
+  has_one :linkedin_account, class_name: 'Social::LinkedinAccount', dependent: :destroy_async
+  ##############################################################################
+  ### AASM #####################################################################
+  aasm :status, column: :status, enum: true do
+    state :draft, initial: true
+    state :active
+    state :archived
+    # Events
+    event :activate do
+      transitions from: :draft, to: :active
+    end
+    event :archive do
+      transitions from: :active, to: :archived
+    end
+  end
+
+  aasm :online_status, column: :online_status, enum: true do
+    state :offline, initial: true
+    state :online
+    state :away
+    state :busy
+    state :invisible
+    # Events
+    event :online do
+      transitions from: %i[offline away busy invisible], to: :online
+    end
+    event :away do
+      transitions from: %i[offline online busy invisible], to: :away
+    end
+    event :busy do
+      transitions from: %i[offline away online invisible], to: :busy
+    end
+    event :invisible do
+      transitions from: %i[offline away busy online], to: :invisible
+    end
+    event :offline do
+      transitions from: %i[online away busy invisible], to: :offline
+    end
+    event :appear do
+      transitions from: :offline, to: :online
+    end
+  end
   ##############################################################################
   ### Attributes ###############################################################
   accepts_nested_attributes_for :phone_number
@@ -167,7 +215,9 @@ class User < ApplicationRecord
   # anchors in the provided regular expression. In most cases, you should be using \A and \z.
   ##############################################################################
   ### Scopes ###################################################################
-
+  scope :active, -> { where(status: :active).or(where(status: :verified)) }
+  scope :verified, -> { where(status: :verified) }
+  scope :inactive, -> { where(status: :inactive) }
   ##############################################################################
   ### Other ####################################################################
   has_paper_trail

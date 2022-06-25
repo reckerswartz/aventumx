@@ -1,0 +1,37 @@
+<%= form_with(model: social_account) do |form| %>
+  <% if social_account.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(social_account.errors.count, "error") %> prohibited this social_account from being saved:</h2>
+
+      <ul>
+        <% social_account.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :github_account_id, style: "display: block" %>
+    <%= form.text_field :github_account_id %>
+  </div>
+
+  <div>
+    <%= form.label :linkedin_account_id, style: "display: block" %>
+    <%= form.text_field :linkedin_account_id %>
+  </div>
+
+  <div>
+    <%= form.label :google_account_id, style: "display: block" %>
+    <%= form.text_field :google_account_id %>
+  </div>
+
+  <div>
+    <%= form.label :fcabook_account_id, style: "display: block" %>
+    <%= form.text_field :fcabook_account_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
