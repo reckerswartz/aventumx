@@ -298,7 +298,7 @@ group :development do
 
   # ERB Linter tool.
   # Read more: https://github.com/Shopify/erb-lint
-  gem 'erb_lint', '~> 0.1.1', require: false
+  gem 'erb_lint', '~> 0.1.3', require: false
 
   # Preview mail in the browser instead of sending
   # Read more: http://www.rubydoc.info/gems/letter_opener
