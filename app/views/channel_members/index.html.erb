@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Channel members</h1>
+
+<div id="channel_members">
+  <% @channel_members.each do |channel_member| %>
+    <%= render channel_member %>
+    <p>
+      <%= link_to "Show this channel member", channel_member %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New channel member", new_channel_member_path %>

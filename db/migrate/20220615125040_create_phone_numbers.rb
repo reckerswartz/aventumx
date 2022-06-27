@@ -32,7 +32,7 @@ class CreatePhoneNumbers < ActiveRecord::Migration[7.0]
       t.timestamps
 
       ## status
-      t.string :status, null: false, default: 'draft'
+      t.integer :status, null: false, default: 0
 
       ## polymorphic association
       t.references :phoneable, polymorphic: true

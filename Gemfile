@@ -6,18 +6,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 group :production, :staging, :development, :test do
-  # AASM - State machines for Ruby classes
-  # Read more: https://github.com/aasm/aasm/blob/master/README.md
-  gem 'aasm', '~> 5.2'
-
   # Validations for Active Storage (presence)
   # Read more: https://github.com/igorkasyanchuk/active_storage_validations
   gem 'active_storage_validations', '~> 0.9.8'
-
-  # Brings before_commit, after_commit, and after_rollback transactional
-  # callbacks outside of your ActiveRecord models
-  # Read more: https://github.com/Envek/after_commit_everywhere
-  gem 'after_commit_everywhere', '~> 1.2', '>= 1.2.2'
 
   # Simple, powerful, first-party analytics for Rails
   # Read more: https://github.com/ankane/ahoy
@@ -40,6 +31,10 @@ group :production, :staging, :development, :test do
   # and several operations under associations and attributes.
   # Read more: https://github.com/amoeba-rb/amoeba
   gem 'amoeba', '~> 3.2'
+
+  # Takes some boilerplate out of Ruby with methods like attr_initialize.
+  # Read more: https://github.com/barsoom/attr_extras
+  gem 'attr_extras', '~> 6.2', '>= 6.2.5'
 
   # AWS Ruby gem for Amazon Simple Storage Service
   # Read more: https://github.com/aws/aws-sdk-ruby

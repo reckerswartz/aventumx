@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_25_113251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status", default: "draft", null: false
+    t.integer "status", default: 0, null: false
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
@@ -138,6 +138,59 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
     t.index ["discarded_at"], name: "index_ahoy_visits_on_discarded_at"
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.string "file_name", default: "", null: false
+    t.string "file_type", null: false
+    t.integer "status", default: 0, null: false
+    t.string "attachable_type", null: false
+    t.bigint "attachable_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable"
+    t.index ["discarded_at"], name: "index_attachments_on_discarded_at"
+    t.index ["uuid_secure"], name: "index_attachments_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_attachments_on_uuid_token", unique: true
+  end
+
+  create_table "channel_members", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.integer "status", default: 0, null: false
+    t.integer "chat_channel_id", null: false
+    t.integer "member_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_channel_members_on_discarded_at"
+    t.index ["uuid_secure"], name: "index_channel_members_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_channel_members_on_uuid_token", unique: true
+  end
+
+  create_table "chat_channels", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.string "first_name", null: false
+    t.string "last_name", default: "", null: false
+    t.boolean "is_private", default: false, null: false
+    t.boolean "is_group", default: false, null: false
+    t.string "username", null: false
+    t.integer "owner_id"
+    t.integer "sender_id"
+    t.integer "status", default: 0, null: false
+    t.string "slug", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_chat_channels_on_discarded_at"
+    t.index ["slug"], name: "index_chat_channels_on_slug", unique: true
+    t.index ["username"], name: "index_chat_channels_on_username", unique: true
+    t.index ["uuid_secure"], name: "index_chat_channels_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_chat_channels_on_uuid_token", unique: true
   end
 
   create_table "facebook_accounts", force: :cascade do |t|
@@ -207,6 +260,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
     t.index ["uuid_token"], name: "index_linkedin_accounts_on_uuid_token", unique: true
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.text "content"
+    t.integer "status", default: 0, null: false
+    t.integer "sender_id", null: false
+    t.integer "chat_channel_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_messages_on_discarded_at"
+    t.index ["uuid_secure"], name: "index_messages_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_messages_on_uuid_token", unique: true
+  end
+
   create_table "old_passwords", force: :cascade do |t|
     t.string "encrypted_password", null: false
     t.string "password_archivable_type", null: false
@@ -235,13 +303,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status", default: "draft", null: false
+    t.integer "status", default: 0, null: false
     t.string "phoneable_type"
     t.bigint "phoneable_id"
     t.index ["discarded_at"], name: "index_phone_numbers_on_discarded_at"
     t.index ["phoneable_type", "phoneable_id"], name: "index_phone_numbers_on_phoneable"
     t.index ["uuid_secure"], name: "index_phone_numbers_on_uuid_secure", unique: true
     t.index ["uuid_token"], name: "index_phone_numbers_on_uuid_token", unique: true
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.string "public_email"
+    t.string "public_birthday"
+    t.string "occupation"
+    t.integer "relationship_status", default: 0, null: false
+    t.string "public_birthplace"
+    t.string "personal_website"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_profiles_on_discarded_at"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["uuid_secure"], name: "index_profiles_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_profiles_on_uuid_token", unique: true
   end
 
   create_table "roles", force: :cascade do |t|
@@ -375,4 +465,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_224020) do
   add_foreign_key "github_accounts", "users"
   add_foreign_key "google_accounts", "users"
   add_foreign_key "linkedin_accounts", "users"
+  add_foreign_key "profiles", "users"
 end

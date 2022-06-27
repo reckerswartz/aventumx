@@ -18,7 +18,7 @@
 #  number                       :string           default(""), not null
 #  phoneable_type               :string
 #  primary                      :boolean          default(FALSE), not null
-#  status                       :string           default("draft"), not null
+#  status                       :integer          default(0), not null
 #  uuid_secure                  :uuid             not null
 #  uuid_token                   :uuid             not null
 #  verified                     :boolean          default(FALSE), not null

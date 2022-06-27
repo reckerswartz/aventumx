@@ -3,6 +3,54 @@
 # == Route Map
 #
 #                                     Prefix Verb   URI Pattern                                                                                       Controller#Action
+#                            channel_members GET    /channel_members(.:format)                                                                        channel_members#index
+#                                            POST   /channel_members(.:format)                                                                        channel_members#create
+#                         new_channel_member GET    /channel_members/new(.:format)                                                                    channel_members#new
+#                        edit_channel_member GET    /channel_members/:id/edit(.:format)                                                               channel_members#edit
+#                             channel_member GET    /channel_members/:id(.:format)                                                                    channel_members#show
+#                                            PATCH  /channel_members/:id(.:format)                                                                    channel_members#update
+#                                            PUT    /channel_members/:id(.:format)                                                                    channel_members#update
+#                                            DELETE /channel_members/:id(.:format)                                                                    channel_members#destroy
+#                              chat_channels GET    /chat_channels(.:format)                                                                          chat_channels#index
+#                                            POST   /chat_channels(.:format)                                                                          chat_channels#create
+#                           new_chat_channel GET    /chat_channels/new(.:format)                                                                      chat_channels#new
+#                          edit_chat_channel GET    /chat_channels/:id/edit(.:format)                                                                 chat_channels#edit
+#                               chat_channel GET    /chat_channels/:id(.:format)                                                                      chat_channels#show
+#                                            PATCH  /chat_channels/:id(.:format)                                                                      chat_channels#update
+#                                            PUT    /chat_channels/:id(.:format)                                                                      chat_channels#update
+#                                            DELETE /chat_channels/:id(.:format)                                                                      chat_channels#destroy
+#                                attachments GET    /attachments(.:format)                                                                            attachments#index
+#                                            POST   /attachments(.:format)                                                                            attachments#create
+#                             new_attachment GET    /attachments/new(.:format)                                                                        attachments#new
+#                            edit_attachment GET    /attachments/:id/edit(.:format)                                                                   attachments#edit
+#                                 attachment GET    /attachments/:id(.:format)                                                                        attachments#show
+#                                            PATCH  /attachments/:id(.:format)                                                                        attachments#update
+#                                            PUT    /attachments/:id(.:format)                                                                        attachments#update
+#                                            DELETE /attachments/:id(.:format)                                                                        attachments#destroy
+#                                   messages GET    /messages(.:format)                                                                               messages#index
+#                                            POST   /messages(.:format)                                                                               messages#create
+#                                new_message GET    /messages/new(.:format)                                                                           messages#new
+#                               edit_message GET    /messages/:id/edit(.:format)                                                                      messages#edit
+#                                    message GET    /messages/:id(.:format)                                                                           messages#show
+#                                            PATCH  /messages/:id(.:format)                                                                           messages#update
+#                                            PUT    /messages/:id(.:format)                                                                           messages#update
+#                                            DELETE /messages/:id(.:format)                                                                           messages#destroy
+#                           account_settings GET    /account_settings(.:format)                                                                       account_settings#index
+#                                            POST   /account_settings(.:format)                                                                       account_settings#create
+#                        new_account_setting GET    /account_settings/new(.:format)                                                                   account_settings#new
+#                       edit_account_setting GET    /account_settings/:id/edit(.:format)                                                              account_settings#edit
+#                            account_setting GET    /account_settings/:id(.:format)                                                                   account_settings#show
+#                                            PATCH  /account_settings/:id(.:format)                                                                   account_settings#update
+#                                            PUT    /account_settings/:id(.:format)                                                                   account_settings#update
+#                                            DELETE /account_settings/:id(.:format)                                                                   account_settings#destroy
+#                                   profiles GET    /profiles(.:format)                                                                               profiles#index
+#                                            POST   /profiles(.:format)                                                                               profiles#create
+#                                new_profile GET    /profiles/new(.:format)                                                                           profiles#new
+#                               edit_profile GET    /profiles/:id/edit(.:format)                                                                      profiles#edit
+#                                    profile GET    /profiles/:id(.:format)                                                                           profiles#show
+#                                            PATCH  /profiles/:id(.:format)                                                                           profiles#update
+#                                            PUT    /profiles/:id(.:format)                                                                           profiles#update
+#                                            DELETE /profiles/:id(.:format)                                                                           profiles#destroy
 #                            social_accounts GET    /social_accounts(.:format)                                                                        social_accounts#index
 #                                            POST   /social_accounts(.:format)                                                                        social_accounts#create
 #                         new_social_account GET    /social_accounts/new(.:format)                                                                    social_accounts#new
@@ -67,6 +115,12 @@
 #                       rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  resources :channel_members
+  resources :chat_channels
+  resources :attachments
+  resources :messages
+  resources :account_settings
+  resources :profiles
   resources :social_accounts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users,

@@ -20,7 +20,7 @@
 #  primary           :boolean          default(FALSE), not null
 #  state             :string           default(""), not null
 #  state_code        :string           default(""), not null
-#  status            :string           default("draft"), not null
+#  status            :integer          default(0), not null
 #  street            :string           default(""), not null
 #  street_name       :string           default(""), not null
 #  street_number     :string           default(""), not null

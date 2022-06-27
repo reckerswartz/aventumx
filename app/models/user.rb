@@ -80,7 +80,6 @@ class User < ApplicationRecord
   ### Includes and Extensions ##################################################
   rolify
   extend FriendlyId
-  include AASM
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -123,6 +122,8 @@ class User < ApplicationRecord
   ### Associations #############################################################
   has_one_time_password(encrypted: true)
   has_many :visits, class_name: 'Ahoy::Visit', dependent: :destroy_async
+  has_many :channels, class_name: 'ChatChannel', inverse_of: :owner, dependent: :destroy_async
+  has_many :messages, class_name: 'Message', inverse_of: :sender, dependent: :destroy_async
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb_square, resize_to_limit: [100, 100]
     attachable.variant :medium_square, resize_to_limit: [300, 300]
@@ -145,47 +146,6 @@ class User < ApplicationRecord
   has_one :google_account, class_name: 'Social::GoogleAccount', dependent: :destroy_async
   has_one :github_account, class_name: 'Social::GithubAccount', dependent: :destroy_async
   has_one :linkedin_account, class_name: 'Social::LinkedinAccount', dependent: :destroy_async
-  ##############################################################################
-  ### AASM #####################################################################
-  aasm :status, column: :status, enum: true do
-    state :draft, initial: true
-    state :active
-    state :archived
-    # Events
-    event :activate do
-      transitions from: :draft, to: :active
-    end
-    event :archive do
-      transitions from: :active, to: :archived
-    end
-  end
-
-  aasm :online_status, column: :online_status, enum: true do
-    state :offline, initial: true
-    state :online
-    state :away
-    state :busy
-    state :invisible
-    # Events
-    event :online do
-      transitions from: %i[offline away busy invisible], to: :online
-    end
-    event :away do
-      transitions from: %i[offline online busy invisible], to: :away
-    end
-    event :busy do
-      transitions from: %i[offline away online invisible], to: :busy
-    end
-    event :invisible do
-      transitions from: %i[offline away busy online], to: :invisible
-    end
-    event :offline do
-      transitions from: %i[online away busy invisible], to: :offline
-    end
-    event :appear do
-      transitions from: :offline, to: :online
-    end
-  end
   ##############################################################################
   ### Attributes ###############################################################
   accepts_nested_attributes_for :phone_number
