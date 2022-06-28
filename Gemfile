@@ -163,7 +163,7 @@ group :production, :staging, :development, :test do
 
   # Use postgresql as the database for Active Record
   # Read more: http://deveiate.org/code/pg/
-  gem 'pg', '~> 1.3'
+  gem 'pg', '~> 1.4'
 
   # Google libphonenumber library was taken as a basis for this gem.
   # Gem uses its data file for validations and number formatting.
