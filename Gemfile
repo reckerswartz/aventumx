@@ -54,10 +54,10 @@ group :production, :staging, :development, :test do
 
   # All sorts of useful information about every country packaged
   # Read more: https://github.com/countries/countries
-  gem 'countries', '~> 5.0'
+  gem 'countries', '~> 5.1'
 
   # Create beautiful JavaScript charts with one line of Ruby
-  gem 'chartkick', '~> 4.1', '>= 4.1.3'
+  gem 'chartkick', '~> 4.2'
 
   # Client Side Validations
   # Read more: https://github.com/DavyJonesLocker/client_side_validations
@@ -163,7 +163,7 @@ group :production, :staging, :development, :test do
 
   # Use postgresql as the database for Active Record
   # Read more: http://deveiate.org/code/pg/
-  gem 'pg', '~> 1.3'
+  gem 'pg', '~> 1.4'
 
   # Google libphonenumber library was taken as a basis for this gem.
   # Gem uses its data file for validations and number formatting.
@@ -340,7 +340,7 @@ group :development do
 
   # Automatic Ruby code style checking tool
   # Read more: https://docs.rubocop.org/
-  gem 'rubocop', '~> 1.30', require: false
+  gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.15'
   gem 'rubocop-rspec', '~> 2.11', require: false
