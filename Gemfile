@@ -12,7 +12,7 @@ group :production, :staging, :development, :test do
 
   # Simple, powerful, first-party analytics for Rails
   # Read more: https://github.com/ankane/ahoy
-  gem 'ahoy_matey', '~> 4.0', '>= 4.0.3'
+  gem 'ahoy_matey', '~> 4.1'
 
   # easily review errors, tie an error to an individual piece of code,
   # and trace the cause back to recent changes
