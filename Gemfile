@@ -57,7 +57,7 @@ group :production, :staging, :development, :test do
   gem 'countries', '~> 5.1'
 
   # Create beautiful JavaScript charts with one line of Ruby
-  gem 'chartkick', '~> 4.1', '>= 4.1.3'
+  gem 'chartkick', '~> 4.2'
 
   # Client Side Validations
   # Read more: https://github.com/DavyJonesLocker/client_side_validations
