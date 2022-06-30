@@ -43,6 +43,6 @@
     "start-dev": "webpack-dev-server --config=webpack.config.dev.js"
   },
   "devDependencies": {
-    "webpack-dev-server": "^4.9.2"
+    "webpack-dev-server": "^4.9.3"
   }
 }
