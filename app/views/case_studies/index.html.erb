@@ -1,1 +1,14 @@
-<h1>Case Studies</h1>
+<p style="color: green"><%= notice %></p>
+
+<h1>Case studies</h1>
+
+<div id="case_studies">
+  <% @case_studies.each do |case_study| %>
+    <%= render case_study %>
+    <p>
+      <%= link_to "Show this case study", case_study %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New case study", new_case_study_path %>
