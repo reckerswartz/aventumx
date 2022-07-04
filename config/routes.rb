@@ -122,6 +122,7 @@ Rails.application.routes.draw do
   resources :account_settings
   resources :profiles
   resources :social_accounts
+  resources :case_studies
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users,
              path: '',
