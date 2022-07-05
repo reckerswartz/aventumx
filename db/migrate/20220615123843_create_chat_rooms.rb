@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateChatChannels < ActiveRecord::Migration[7.0]
+class CreateChatRooms < ActiveRecord::Migration[7.0]
   def change
-    create_table :chat_channels, if_not_exists: true do |t|
+    create_table :chat_rooms, if_not_exists: true do |t|
       ## uuid token
       t.uuid :uuid_token, null: false, default: 'gen_random_uuid()'
       t.uuid :uuid_secure, null: false, default: 'gen_random_uuid()'
@@ -12,6 +12,7 @@ class CreateChatChannels < ActiveRecord::Migration[7.0]
       t.string :last_name, null: false, default: ''
       t.boolean :is_private, default: false, null: false
       t.boolean :is_group, default: false, null: false
+      t.boolean :is_direct, default: false, null: false
       t.string :username, null: false
 
       ## references

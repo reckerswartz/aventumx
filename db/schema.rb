@@ -157,27 +157,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_113251) do
     t.index ["uuid_token"], name: "index_attachments_on_uuid_token", unique: true
   end
 
-  create_table "channel_members", force: :cascade do |t|
-    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
-    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
-    t.integer "status", default: 0, null: false
-    t.integer "chat_channel_id", null: false
-    t.integer "member_id", null: false
-    t.datetime "discarded_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_channel_members_on_discarded_at"
-    t.index ["uuid_secure"], name: "index_channel_members_on_uuid_secure", unique: true
-    t.index ["uuid_token"], name: "index_channel_members_on_uuid_token", unique: true
-  end
-
-  create_table "chat_channels", force: :cascade do |t|
+  create_table "chat_rooms", force: :cascade do |t|
     t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
     t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
     t.string "first_name", null: false
     t.string "last_name", default: "", null: false
     t.boolean "is_private", default: false, null: false
     t.boolean "is_group", default: false, null: false
+    t.boolean "is_direct", default: false, null: false
     t.string "username", null: false
     t.integer "owner_id"
     t.integer "sender_id"
@@ -186,11 +173,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_113251) do
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_chat_channels_on_discarded_at"
-    t.index ["slug"], name: "index_chat_channels_on_slug", unique: true
+    t.index ["discarded_at"], name: "index_chat_rooms_on_discarded_at"
+    t.index ["slug"], name: "index_chat_rooms_on_slug", unique: true
     t.index ["username"], name: "index_chat_channels_on_username", unique: true
-    t.index ["uuid_secure"], name: "index_chat_channels_on_uuid_secure", unique: true
-    t.index ["uuid_token"], name: "index_chat_channels_on_uuid_token", unique: true
+    t.index ["uuid_secure"], name: "index_chat_rooms_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_chat_rooms_on_uuid_token", unique: true
   end
 
   create_table "facebook_accounts", force: :cascade do |t|
@@ -266,7 +253,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_113251) do
     t.text "content"
     t.integer "status", default: 0, null: false
     t.integer "sender_id", null: false
-    t.integer "chat_channel_id", null: false
+    t.integer "chat_room_id", null: false
+    t.integer "parent_id"
+    t.boolean "is_reply", default: false, null: false
+    t.boolean "is_forward", default: false, null: false
+    t.boolean "is_thread", default: false, null: false
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -358,6 +349,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_113251) do
     t.index ["name", "interval", "time", "dimensions"], name: "index_rollups_on_name_and_interval_and_time_and_dimensions", unique: true
   end
 
+  create_table "room_members", force: :cascade do |t|
+    t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
+    t.integer "status", default: 0, null: false
+    t.integer "chat_room_id", null: false
+    t.integer "member_id", null: false
+    t.integer "role", default: 0, null: false
+    t.jsonb "settings", default: {}
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_room_members_on_discarded_at"
+    t.index ["uuid_secure"], name: "index_room_members_on_uuid_secure", unique: true
+    t.index ["uuid_token"], name: "index_room_members_on_uuid_token", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.uuid "uuid_token", default: -> { "gen_random_uuid()" }, null: false
     t.uuid "uuid_secure", default: -> { "gen_random_uuid()" }, null: false
@@ -410,6 +417,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_113251) do
     t.string "locale_code", default: "en", null: false
     t.integer "status", default: 0, null: false
     t.integer "online_status", default: 0, null: false
+    t.jsonb "settings", default: {}
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true

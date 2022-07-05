@@ -2,30 +2,47 @@
 
 # == Schema Information
 #
-# Table name: channel_members
+# Table name: room_members
 #
-#  id              :bigint           not null, primary key
-#  discarded_at    :datetime
-#  status          :integer          default(0), not null
-#  uuid_secure     :uuid             not null
-#  uuid_token      :uuid             not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  chat_channel_id :integer          not null
-#  member_id       :integer          not null
+#  id           :bigint           not null, primary key
+#  discarded_at :datetime
+#  role         :integer          default(0), not null
+#  settings     :jsonb
+#  status       :integer          default("active"), not null
+#  uuid_secure  :uuid             not null
+#  uuid_token   :uuid             not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  chat_room_id :integer          not null
+#  member_id    :integer          not null
 #
 # Indexes
 #
-#  index_channel_members_on_discarded_at  (discarded_at)
-#  index_channel_members_on_uuid_secure   (uuid_secure) UNIQUE
-#  index_channel_members_on_uuid_token    (uuid_token) UNIQUE
+#  index_room_members_on_discarded_at  (discarded_at)
+#  index_room_members_on_uuid_secure   (uuid_secure) UNIQUE
+#  index_room_members_on_uuid_token    (uuid_token) UNIQUE
 #
-class ChannelMember < ApplicationRecord
+class RoomMember < ApplicationRecord
   ##############################################################################
   ### Includes and Extensions ##################################################
 
   ##############################################################################
   ### Constants ################################################################
+  enum status: {
+    active: 0,
+    invited: 1,
+    blocked: 2,
+    kicked: 3,
+    left: 4,
+    removed: 5,
+    reported: 6
+  }, _suffix: true
+
+  enum role: {
+    member: 0,
+    admin: 1,
+    owner: 2
+  }, _suffix: true
 
   ##############################################################################
   ### Callbacks ################################################################
@@ -39,8 +56,8 @@ class ChannelMember < ApplicationRecord
 
   ##############################################################################
   ### Associations #############################################################
-  belongs_to :chat_channel, inverse_of: :channel_members
-  belongs_to :member, class_name: 'User', inverse_of: :channel_members
+  belongs_to :chat_room, inverse_of: :room_members
+  belongs_to :member, class_name: 'User', inverse_of: :room_members
   ##############################################################################
   ### Attributes ###############################################################
 

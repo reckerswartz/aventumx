@@ -8,12 +8,13 @@ config.autoAddCss = false;
 // An example icon
 import {faFacebookSquare, faTwitterSquare, faGoogle, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
-import {faThList, faSignInAlt, faCog, faSignOutAlt, faUserGraduate, faStaffAesculapius, faBuildingColumns} from '@fortawesome/free-solid-svg-icons';
+import {faThList, faSignInAlt, faCog, faSignOutAlt, faUserGraduate, faStaffAesculapius, faBuildingColumns, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
-import {faAngry} from '@fortawesome/free-regular-svg-icons';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
-    faThList, faSignInAlt, faFacebookSquare, faTwitterSquare, faGoogle, faLinkedin, faCog, faSignOutAlt,faUserGraduate,faStaffAesculapius,faBuildingColumns
+    faThList, faSignInAlt, faFacebookSquare, faTwitterSquare, faGoogle, faLinkedin, faCog, faSignOutAlt,faUserGraduate,faStaffAesculapius,faBuildingColumns, faTriangleExclamation,
+    faBell
 );
 
 

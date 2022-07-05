@@ -40,6 +40,7 @@
 #  reset_password_sent_at        :datetime
 #  reset_password_token          :string
 #  second_factor_attempts_count  :integer          default(0)
+#  settings                      :jsonb
 #  sign_in_count                 :integer          default(0), not null
 #  slug                          :string
 #  status                        :integer          default("draft"), not null

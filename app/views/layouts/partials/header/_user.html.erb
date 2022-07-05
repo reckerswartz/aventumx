@@ -35,7 +35,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <%= button_to(destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item phl-4 text-wild_watermelon-on-hover') do %>
+                <%= button_to(destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'dropdown-item phl-4 text-wild_watermelon-on-hover') do %>
                   <i class="fas fa-sign-out-alt"></i> Sign-out
                 <% end %>
               </li>
