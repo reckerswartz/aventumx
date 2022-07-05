@@ -22,7 +22,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   ##############################################################################
   ### Scopes ###################################################################
-  default_scope -> { kept }
 
   ##############################################################################
   ### Other ####################################################################
@@ -39,6 +38,43 @@ class ApplicationRecord < ActiveRecord::Base
     image_path_prefix + image_files.sample.split(image_path_prefix)[1]
   end
 
+  def find_unique_username(username)
+    taken_usernames =
+      self.class
+          .with_discarded
+          .where('username LIKE ?', "#{username}%")
+          .pluck(:username)
+
+    # return username if it's free
+    unless taken_usernames.include?(username) ||
+           is_reserved_word?(username)
+      return username
+    end
+
+    # find a unique username
+    count = 1
+    loop do
+      # Generate the username using the original name and the random cool prefix
+      new_username = "#{first_name}_#{Haikunator.haikunate(0).downcase.tr('-', '_')}".parameterize.underscore
+      # If the username is not taken, return it
+      unless taken_usernames.include?(new_username) ||
+             is_reserved_word?(username)
+        Rails.logger.info { "new_username: #{new_username}" }
+        return new_username
+      end
+
+      count += 1
+      ## break if we've checked 100 times, to avoid infinite loop
+      break if count > 100 # arbitrary number
+    end
+  end
+
+  def is_reserved_word?(word)
+    ActionController::Base.instance_methods.include?(word) ||
+      ActiveRecord::Base.instance_methods.include?(word) ||
+      friendly_id_config.reserved_words.include?(word)
+  end
+
   #########
 
   # protected
@@ -51,39 +87,3 @@ class ApplicationRecord < ActiveRecord::Base
 
   #######
 end
-
-module ValidatesUrlFormatOf
-  IPv4_PART = /\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]/ # 0-255
-
-  # First regexp doesn't work in Ruby 1.8 and second has a bug in 1.9.2:
-  # https://github.com/henrik/validates_url_format_of/issues/issue/4/#comment_760674
-  ALNUM = 'ä'.match?(/[[:alnum:]]/) ? /[[:alnum:]]/ : /[^\W_]/
-
-  REGEXP = %r{
-    \A
-    https?://                                                          # http:// or https://
-    ([^\s:@]+:[^\s:@]*@)?                                              # optional username:pw@
-    ( ((#{ALNUM}+\.)*xn---*)?#{ALNUM}+([-.]#{ALNUM}+)*\.[a-z]{2,6}\.? |  # domain (including Punycode/IDN)...
-        #{IPv4_PART}(\.#{IPv4_PART}){3} )                              # or IPv4
-    (:\d{1,5})?                                                        # optional port
-    ([/?]\S*)?                                                         # optional /whatever or ?whatever
-    \Z
-  }iux
-
-  DEFAULT_MESSAGE     = 'does not appear to be a valid URL'
-  DEFAULT_MESSAGE_URL = 'does not appear to be valid'
-
-  def validates_url_format_of(*attr_names)
-    options = { allow_nil: false,
-                allow_blank: false,
-                with: REGEXP }
-    options = options.merge(attr_names.pop) if attr_names.last.is_a?(Hash)
-
-    attr_names.each do |attr_name|
-      message = attr_name.to_s.match?(/(_|\b)URL(_|\b)/i) ? DEFAULT_MESSAGE_URL : DEFAULT_MESSAGE
-      validates_format_of(attr_name, { message: }.merge(options))
-    end
-  end
-end
-
-ActiveRecord::Base.extend(ValidatesUrlFormatOf)

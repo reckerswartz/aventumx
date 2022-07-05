@@ -6,7 +6,9 @@
 #
 #  id              :bigint           not null, primary key
 #  discarded_at    :datetime
-#  status          :integer          default(0), not null
+#  role            :integer          default(0), not null
+#  settings        :jsonb
+#  status          :integer          default("active"), not null
 #  uuid_secure     :uuid             not null
 #  uuid_token      :uuid             not null
 #  created_at      :datetime         not null

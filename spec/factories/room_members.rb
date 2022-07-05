@@ -6,7 +6,9 @@
 #
 #  id              :bigint           not null, primary key
 #  discarded_at    :datetime
-#  status          :integer          default(0), not null
+#  role            :integer          default(0), not null
+#  settings        :jsonb
+#  status          :integer          default("active"), not null
 #  uuid_secure     :uuid             not null
 #  uuid_token      :uuid             not null
 #  created_at      :datetime         not null
@@ -21,7 +23,10 @@
 #  index_channel_members_on_uuid_token    (uuid_token) UNIQUE
 #
 FactoryBot.define do
-  factory :channel_member do
-    status { 'MyString' }
+  factory :room_member do
+    member { create(:user) }
+    chat_channel { create(:chat_room) }
+    role { 0 }
+    settings { {} }
   end
 end

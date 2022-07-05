@@ -2,11 +2,12 @@
 
 # == Schema Information
 #
-# Table name: chat_channels
+# Table name: chat_rooms
 #
 #  id           :bigint           not null, primary key
 #  discarded_at :datetime
 #  first_name   :string           not null
+#  is_direct    :boolean          default(FALSE), not null
 #  is_group     :boolean          default(FALSE), not null
 #  is_private   :boolean          default(FALSE), not null
 #  last_name    :string           default(""), not null
@@ -22,13 +23,13 @@
 #
 # Indexes
 #
-#  index_chat_channels_on_discarded_at  (discarded_at)
-#  index_chat_channels_on_slug          (slug) UNIQUE
-#  index_chat_channels_on_username      (username) UNIQUE
-#  index_chat_channels_on_uuid_secure   (uuid_secure) UNIQUE
-#  index_chat_channels_on_uuid_token    (uuid_token) UNIQUE
+#  index_chat_channels_on_username   (username) UNIQUE
+#  index_chat_rooms_on_discarded_at  (discarded_at)
+#  index_chat_rooms_on_slug          (slug) UNIQUE
+#  index_chat_rooms_on_uuid_secure   (uuid_secure) UNIQUE
+#  index_chat_rooms_on_uuid_token    (uuid_token) UNIQUE
 #
-class ChatChannel < ApplicationRecord
+class ChatRoom < ApplicationRecord
   ##############################################################################
   ### Includes and Extensions ##################################################
   extend FriendlyId
@@ -44,7 +45,7 @@ class ChatChannel < ApplicationRecord
   # Set default values.
   after_initialize do
     if first_name.blank?
-      self.first_name = 'Channel'
+      self.first_name = 'Room'
       self.last_name = Haikunator.haikunate(0).downcase.tr('-', '_')
     end
     create_username if username.blank? && first_name.present?
@@ -55,21 +56,27 @@ class ChatChannel < ApplicationRecord
 
   ##############################################################################
   ### Associations #############################################################
-  belongs_to :owner, class_name: 'User', inverse_of: :channels, optional: true
+  belongs_to :owner, class_name: 'User', inverse_of: :rooms, optional: true
   belongs_to :sender, class_name: 'User', optional: true
-  has_many :channel_members, inverse_of: :chat_channel, dependent: :destroy_async
-  has_many :members, through: :channel_members, inverse_of: :chat_channels,
+  has_many :room_members, inverse_of: :chat_room, dependent: :destroy_async
+  has_many :members, through: :room_members, inverse_of: :chat_rooms,
                      dependent: :destroy_async
-  has_many :messages, inverse_of: :chat_channel, dependent: :destroy_async
+  has_many :messages, inverse_of: :chat_room, dependent: :destroy_async
   ##############################################################################
   ### Attributes ###############################################################
 
   ##############################################################################
   ### Validations ##############################################################
-
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, length: { maximum: 50 }
+  validates :status, inclusion: { in: statuses.keys }
+  validates :is_direct, :is_group, :is_private, presence: true, inclusion: { in: [true, false] }
+  ## if is_direct is true, then maximum channel members can be 2
+  validates :members, length: { maximum: 2, minimum: 2, message: 'minimum members is 2' }, unless: :is_direct?
+  ## if is_direct is false, then maximum channel members can be 100
+  validates :members, length: { maximum: 100, minimum: 2, message: 'maximum members is 100' }, if: :is_direct?
   ##############################################################################
   ### Scopes ###################################################################
-
   ##############################################################################
   ### Other ####################################################################
   has_paper_trail
@@ -91,6 +98,7 @@ class ChatChannel < ApplicationRecord
 
   def before_save_do
     downcase_fields
+    fields_auto_fill
   end
 
   def before_validation_do
@@ -109,6 +117,17 @@ class ChatChannel < ApplicationRecord
     username.downcase!
   end
 
+  def fields_auto_fill
+    if is_private?
+      self.is_group = true
+      self.is_direct = false
+    elsif is_group?
+      self.is_direct = false
+    elsif is_direct?
+      self.is_group = false
+    end
+  end
+
   def create_username
     if username.blank?
       self.username =
@@ -117,40 +136,5 @@ class ChatChannel < ApplicationRecord
   rescue StandardError
     errors.add(:username, 'cannot be created')
     throw :abort
-  end
-
-  def find_unique_username(username)
-    taken_usernames =
-      ChatChannel
-      .with_discarded
-      .where('username LIKE ?', "#{username}%")
-      .pluck(:username)
-
-    # return username if it's free
-    unless taken_usernames.include?(username) ||
-           ActionController::Base.instance_methods.include?(username) ||
-           ActiveRecord::Base.instance_methods.include?(username) ||
-           friendly_id_config.reserved_words.include?(username)
-      return username
-    end
-
-    # find a unique username
-    count = 1
-    loop do
-      # Generate the username using the original name and the random cool prefix
-      new_username = "#{first_name}_#{Haikunator.haikunate(0).downcase.tr('-', '_')}".parameterize.underscore
-      # If the username is not taken, return it
-      unless taken_usernames.include?(new_username) ||
-             ActionController::Base.instance_methods.include?(new_username) ||
-             ActiveRecord::Base.instance_methods.include?(new_username) ||
-             friendly_id_config.reserved_words.include?(new_username)
-        Rails.logger.info { "new_username: #{new_username}" }
-        return new_username
-      end
-
-      count += 1
-      ## break if we've checked 100 times, to avoid infinite loop
-      break if count > 100 # arbitrary number
-    end
   end
 end

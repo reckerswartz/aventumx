@@ -13,7 +13,19 @@ class CreateMessages < ActiveRecord::Migration[7.0]
 
       ## references
       t.integer :sender_id, foreign_key: true, null: false
-      t.integer :chat_channel_id, foreign_key: true, null: false
+      t.integer :chat_room_id, foreign_key: true, null: false
+
+      ## parent message
+      t.integer :parent_id, foreign_key: true, null: true
+
+      ## is_reply
+      t.boolean :is_reply, default: false, null: false
+
+      ## is_forward
+      t.boolean :is_forward, default: false, null: false
+
+      ## is_thread
+      t.boolean :is_thread, default: false, null: false
 
       ## token index
       t.index :uuid_token, unique: true

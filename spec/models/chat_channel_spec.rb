@@ -7,6 +7,7 @@
 #  id           :bigint           not null, primary key
 #  discarded_at :datetime
 #  first_name   :string           not null
+#  is_direct    :boolean          default(FALSE), not null
 #  is_group     :boolean          default(FALSE), not null
 #  is_private   :boolean          default(FALSE), not null
 #  last_name    :string           default(""), not null

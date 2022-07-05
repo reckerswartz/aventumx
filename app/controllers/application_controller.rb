@@ -38,6 +38,8 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  add_flash_types :success, :info, :warning, :danger
+
   private
 
   def user_not_authorized

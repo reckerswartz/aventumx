@@ -1,6 +1,5 @@
 const path    = require("path")
 const webpack = require("webpack")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -20,7 +19,6 @@ module.exports = {
             jQuery: 'jquery',
             Popper: ['popper.js', 'default']
         }),
-        new CleanWebpackPlugin()
     ],
     module: {
         rules: [

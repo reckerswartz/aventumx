@@ -4,16 +4,20 @@
 #
 # Table name: messages
 #
-#  id              :bigint           not null, primary key
-#  content         :text
-#  discarded_at    :datetime
-#  status          :integer          default("pending"), not null
-#  uuid_secure     :uuid             not null
-#  uuid_token      :uuid             not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  chat_channel_id :integer          not null
-#  sender_id       :integer          not null
+#  id           :bigint           not null, primary key
+#  content      :text
+#  discarded_at :datetime
+#  is_forward   :boolean          default(FALSE), not null
+#  is_reply     :boolean          default(FALSE), not null
+#  is_thread    :boolean          default(FALSE), not null
+#  status       :integer          default("pending"), not null
+#  uuid_secure  :uuid             not null
+#  uuid_token   :uuid             not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  chat_room_id :integer          not null
+#  parent_id    :integer
+#  sender_id    :integer          not null
 #
 # Indexes
 #
@@ -52,7 +56,7 @@ class Message < ApplicationRecord
   has_rich_text :content
   has_many :attachments, as: :attachable, dependent: :destroy_async
   belongs_to :sender, class_name: 'User', inverse_of: :messages
-  belongs_to :chat_channel, inverse_of: :messages, dependent: :destroy_async
+  belongs_to :chat_room, inverse_of: :messages, dependent: :destroy_async
 
   ##############################################################################
   ### Attributes ###############################################################

@@ -97,6 +97,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       ## online_status
       t.integer :online_status, null: false, default: 0
+
+      ## settings
+      t.jsonb :settings, default: {}
     end
 
     add_index :users, :email, unique: true

@@ -1,0 +1,11 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <% if flash.any? %>
+    <% flash.each do |flash_type, message| %>
+      <%= render partial: 'layouts/partials/flashes/alert', locals: {message: message} if flash_type == 'alert' %>
+      <%= render partial: 'layouts/partials/flashes/notice', locals: {message: message} if flash_type == 'notice' %>
+      <%= render partial: 'layouts/partials/flashes/danger', locals: {message: message} if flash_type == 'danger' %>
+      <%= render partial: 'layouts/partials/flashes/success', locals: {message: message} if flash_type == 'success' %>
+      <%= render partial: 'layouts/partials/flashes/warning', locals: {message: message} if flash_type == 'alert' %>
+    <% end %>
+  <% end %>
+</div>

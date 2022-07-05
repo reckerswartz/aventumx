@@ -40,6 +40,7 @@
 #  reset_password_sent_at        :datetime
 #  reset_password_token          :string
 #  second_factor_attempts_count  :integer          default(0)
+#  settings                      :jsonb
 #  sign_in_count                 :integer          default(0), not null
 #  slug                          :string
 #  status                        :integer          default("draft"), not null
@@ -122,7 +123,11 @@ class User < ApplicationRecord
   ### Associations #############################################################
   has_one_time_password(encrypted: true)
   has_many :visits, class_name: 'Ahoy::Visit', dependent: :destroy_async
-  has_many :channels, class_name: 'ChatChannel', inverse_of: :owner, dependent: :destroy_async
+  ## all chatrooms that the user is a owner of
+  has_many :rooms, class_name: 'ChatRoom', inverse_of: :owner, dependent: :destroy_async
+  ## all chatrooms that the user is a member of
+  has_many :chat_rooms, class_name: 'ChatRoom', inverse_of: :members, dependent: :destroy_async
+  ## all messages that the user has sent
   has_many :messages, class_name: 'Message', inverse_of: :sender, dependent: :destroy_async
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb_square, resize_to_limit: [100, 100]
@@ -178,6 +183,9 @@ class User < ApplicationRecord
   scope :active, -> { where(status: :active).or(where(status: :verified)) }
   scope :verified, -> { where(status: :verified) }
   scope :inactive, -> { where(status: :inactive) }
+
+  ## direct chatrooms that the user is a member of
+  scope :direct_chat_rooms, -> { joins(:chat_rooms).where(chat_room: { is_direct: true }) }
   ##############################################################################
   ### Other ####################################################################
   has_paper_trail
@@ -256,41 +264,6 @@ class User < ApplicationRecord
   rescue StandardError
     errors.add(:username, 'cannot be created')
     throw :abort
-  end
-
-  def find_unique_username(username)
-    taken_usernames =
-      User
-      .with_discarded
-      .where('username LIKE ?', "#{username}%")
-      .pluck(:username)
-
-    # return username if it's free
-    unless taken_usernames.include?(username) ||
-           ActionController::Base.instance_methods.include?(username) ||
-           ActiveRecord::Base.instance_methods.include?(username) ||
-           friendly_id_config.reserved_words.include?(username)
-      return username
-    end
-
-    # find a unique username
-    count = 1
-    loop do
-      # Generate the username using the original name and the random cool prefix
-      new_username = "#{first_name}_#{Haikunator.haikunate(0).downcase.tr('-', '_')}".parameterize.underscore
-      # If the username is not taken, return it
-      unless taken_usernames.include?(new_username) ||
-             ActionController::Base.instance_methods.include?(new_username) ||
-             ActiveRecord::Base.instance_methods.include?(new_username) ||
-             friendly_id_config.reserved_words.include?(new_username)
-        Rails.logger.info { "new_username: #{new_username}" }
-        return new_username
-      end
-
-      count += 1
-      ## break if we've checked 100 times, to avoid infinite loop
-      break if count > 100 # arbitrary number
-    end
   end
 
   def assign_default_role
