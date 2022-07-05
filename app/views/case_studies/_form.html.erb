@@ -1,0 +1,17 @@
+<%= form_with(model: case_study) do |form| %>
+  <% if case_study.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(case_study.errors.count, "error") %> prohibited this case_study from being saved:</h2>
+
+      <ul>
+        <% case_study.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

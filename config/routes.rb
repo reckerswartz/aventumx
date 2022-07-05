@@ -59,6 +59,14 @@
 #                                            PATCH  /social_accounts/:id(.:format)                                                                    social_accounts#update
 #                                            PUT    /social_accounts/:id(.:format)                                                                    social_accounts#update
 #                                            DELETE /social_accounts/:id(.:format)                                                                    social_accounts#destroy
+#                               case_studies GET    /case_studies(.:format)                                                                           case_studies#index
+#                                            POST   /case_studies(.:format)                                                                           case_studies#create
+#                             new_case_study GET    /case_studies/new(.:format)                                                                       case_studies#new
+#                            edit_case_study GET    /case_studies/:id/edit(.:format)                                                                  case_studies#edit
+#                                 case_study GET    /case_studies/:id(.:format)                                                                       case_studies#show
+#                                            PATCH  /case_studies/:id(.:format)                                                                       case_studies#update
+#                                            PUT    /case_studies/:id(.:format)                                                                       case_studies#update
+#                                            DELETE /case_studies/:id(.:format)                                                                       case_studies#destroy
 #                           new_user_session GET    /login(.:format)                                                                                  users/sessions#new
 #                               user_session POST   /login(.:format)                                                                                  users/sessions#create
 #                       destroy_user_session DELETE /logout(.:format)                                                                                 users/sessions#destroy
@@ -122,6 +130,7 @@ Rails.application.routes.draw do
   resources :account_settings
   resources :profiles
   resources :social_accounts
+  resources :case_studies
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users,
              path: '',

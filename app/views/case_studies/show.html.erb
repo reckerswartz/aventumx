@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @case_study %>
+
+<div>
+  <%= link_to "Edit this case study", edit_case_study_path(@case_study) %> |
+  <%= link_to "Back to case studies", case_studies_path %>
+
+  <%= button_to "Destroy this case study", @case_study, method: :delete %>
+</div>
