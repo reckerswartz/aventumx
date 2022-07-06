@@ -132,7 +132,7 @@ group :production, :staging, :development, :test do
 
   # Search Engine Optimization (SEO)
   # Read more: http://github.com/kpumuk/meta-tags
-  gem 'meta-tags', '~> 2.16'
+  gem 'meta-tags', '~> 2.17'
 
   # This library provides integration of RubyMoney - Money gem with Rails
   # Read more: https://github.com/RubyMoney/money-rails
