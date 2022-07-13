@@ -16,7 +16,7 @@
     "@hotwired/turbo-rails": "^7.1.3",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^6.0.5",
-    "@rails/actiontext": "^6.0.5",
+    "@rails/actiontext": "^7.0.3",
     "@rails/request.js": "^0.0.6",
     "@tkrotoff/bootstrap-floating-label": "^0.11.5",
     "animate.css": "^4.1.1",
