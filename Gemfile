@@ -224,7 +224,7 @@ group :production, :staging, :development, :test do
   gem 'sprockets-rails', '~> 3.4', '>= 3.4.2'
 
   # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-  gem 'stimulus-rails', '~> 1.0'
+  gem 'stimulus-rails', '~> 1.1'
 
   # Accurate current and historical timezones for Ruby with support for Geonames
   # Read more: https://github.com/panthomakos/timezone
