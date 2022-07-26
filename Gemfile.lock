@@ -350,7 +350,7 @@ GEM
       timeout
     net-ssh (7.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.7-x86_64-linux)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.6)
       faraday (>= 0.17.3, < 3.0)
@@ -581,7 +581,7 @@ GEM
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.3)
-    syntax_tree (3.2.0)
+    syntax_tree (3.2.1)
       prettier_print
     syntax_tree-haml (1.2.0)
       haml (>= 5.2)
