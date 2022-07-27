@@ -207,7 +207,7 @@ group :production, :staging, :development, :test do
 
   # rqrcode is a library for encoding QR codes.
   # Read more: https://github.com/whomwah/rqrcode
-  gem 'rqrcode', '~> 2.1', '>= 2.1.1'
+  gem 'rqrcode', '~> 2.1'
 
   # ruby-vips is a binding for the libvips image processing library
   # Read more: https://github.com/libvips/ruby-vips
