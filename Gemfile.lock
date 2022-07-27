@@ -386,8 +386,8 @@ GEM
     pdf-core (0.9.0)
     pg (1.4.1)
     phonelib (0.7.0)
-    prettier (3.1.2)
-      syntax_tree (>= 2.3.1)
+    prettier (3.2.0)
+      syntax_tree (>= 2.7.1)
       syntax_tree-haml (>= 1.1.0)
       syntax_tree-rbs (>= 0.2.0)
     prettier_print (0.1.0)
@@ -581,9 +581,9 @@ GEM
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.4)
-    syntax_tree (3.2.0)
+    syntax_tree (3.2.1)
       prettier_print
-    syntax_tree-haml (1.2.0)
+    syntax_tree-haml (1.3.0)
       haml (>= 5.2)
       prettier_print
       syntax_tree (>= 2.0.1)
@@ -595,7 +595,7 @@ GEM
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
     thor (1.2.1)
-    tilt (2.0.10)
+    tilt (2.0.11)
     timeout (0.3.0)
     timezone (1.3.16)
     ttfunk (1.7.0)
@@ -684,7 +684,7 @@ DEPENDENCIES
   pg (~> 1.4)
   phonelib (~> 0.7.0)
   prawn!
-  prettier (~> 3.1)
+  prettier (~> 3.2)
   pronto (~> 0.11.0)
   pronto-brakeman (~> 0.11.0)
   pronto-erb_lint!

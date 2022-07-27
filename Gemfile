@@ -306,7 +306,7 @@ group :development do
 
   # prettier plugin for the Ruby programming language
   # Read more: https://github.com/prettier/plugin-ruby#readme
-  gem 'prettier', '~> 3.1'
+  gem 'prettier', '~> 3.2'
 
   # Pronto runs analysis quickly by checking only the relevant changes
   # Read more: https://github.com/prontolabs/pronto
