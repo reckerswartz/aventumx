@@ -42,7 +42,7 @@ group :production, :staging, :development, :test do
 
   # to optimize and cache expensive computations
   # Read more: https://github.com/Shopify/bootsnap
-  gem 'bootsnap', '~> 1.12', require: true
+  gem 'bootsnap', '~> 1.13', require: true
 
   # Simple authorization solution for Rails. All permissions are stored in a single location.
   # Read more: https://github.com/CanCanCommunity/cancancan
