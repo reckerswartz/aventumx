@@ -26,7 +26,7 @@
     "file-loader": "^6.2.0",
     "jquery": "^3.6.0",
     "roboto-fontface": "^0.10.0",
-    "sass": "^1.54.0",
+    "sass": "^1.54.1",
     "sass-loader": "^13.0.2",
     "select2": "^4.1.0-rc.0",
     "sweetalert2": "^11.4.24",
