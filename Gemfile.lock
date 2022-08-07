@@ -385,7 +385,7 @@ GEM
       ast (~> 2.4.1)
     pdf-core (0.9.0)
     pg (1.4.2)
-    phonelib (0.7.0)
+    phonelib (0.7.1)
     prettier (3.2.0)
       syntax_tree (>= 2.7.1)
       syntax_tree-haml (>= 1.1.0)
@@ -682,7 +682,7 @@ DEPENDENCIES
   paper_trail-association_tracking (~> 2.2, >= 2.2.1)
   paper_trail-globalid (~> 0.2.0)
   pg (~> 1.4)
-  phonelib (~> 0.7.0)
+  phonelib (~> 0.7.1)
   prawn!
   prettier (~> 3.2)
   pronto (~> 0.11.0)
