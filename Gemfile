@@ -340,7 +340,7 @@ group :development do
 
   # Automatic Ruby code style checking tool
   # Read more: https://docs.rubocop.org/
-  gem 'rubocop', '~> 1.32', require: false
+  gem 'rubocop', '~> 1.33', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.15'
   gem 'rubocop-rspec', '~> 2.12', require: false
