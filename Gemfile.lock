@@ -238,7 +238,7 @@ GEM
       rubocop
       smart_properties
     errbase (0.2.2)
-    erubi (1.10.0)
+    erubi (1.11.0)
     erubis (2.7.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
