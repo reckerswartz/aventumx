@@ -192,7 +192,7 @@ GEM
       sshkit (~> 1.2)
     character_set (1.6.0)
       sorted_set (~> 1.0)
-    chartkick (4.2.0)
+    chartkick (4.2.1)
     chunky_png (1.4.0)
     client_side_validations (20.0.2)
       js_regex (~> 3.1)
