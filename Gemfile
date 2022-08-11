@@ -282,7 +282,7 @@ group :development do
   # Brakeman detects security vulnerabilities in Ruby on Rails applications
   # via static analysis.
   # Read more: https://brakemanscanner.org/
-  gem 'brakeman', '~> 5.2', require: false
+  gem 'brakeman', '~> 5.3', require: false
 
   # Capistrano is a utility and framework for executing commands in parallel on multiple
   gem 'capistrano', '~> 3.17', require: false
