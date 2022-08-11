@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ankane/strong_migrations.git
-  revision: 26e5fdd4cf141f8079317a83f8acc1865c87a10f
+  revision: 941b7b26d22d83c3d04d7f32dcd2c8d37697f617
   specs:
     strong_migrations (1.2.0)
       activerecord (>= 5.2)
