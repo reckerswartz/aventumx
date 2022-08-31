@@ -24,4 +24,5 @@ import "@rails/actiontext"
 import './src/ui/core/bootstrap';
 import './src/plugins';
 import './src/datatables/datatables';
+import './src/utilities';
 import "./channels"

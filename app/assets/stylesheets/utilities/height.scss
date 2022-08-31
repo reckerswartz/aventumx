@@ -1,0 +1,17 @@
+// scss-docs-start height-map
+$height-sizes: (
+        "100", "150", "200", "300", "400","500", "600"
+);
+
+// Used to generate height-sizes
+@each $height-size in $height-sizes {
+  .min-height-#{$height-size} {
+    min-height: #{$height-size}px;
+  }
+  .max-height-#{$height-size} {
+    max-height: #{$height-size}px;
+  }
+  .height-#{$height-size} {
+    height: #{$height-size}px;
+  }
+}
