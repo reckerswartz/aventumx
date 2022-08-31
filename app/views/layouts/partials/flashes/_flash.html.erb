@@ -5,7 +5,7 @@
       <%= render partial: 'layouts/partials/flashes/notice', locals: {message: message} if flash_type == 'notice' %>
       <%= render partial: 'layouts/partials/flashes/danger', locals: {message: message} if flash_type == 'danger' %>
       <%= render partial: 'layouts/partials/flashes/success', locals: {message: message} if flash_type == 'success' %>
-      <%= render partial: 'layouts/partials/flashes/warning', locals: {message: message} if flash_type == 'alert' %>
+      <%= render partial: 'layouts/partials/flashes/warning', locals: {message: message} if flash_type == 'warning' %>
     <% end %>
   <% end %>
 </div>

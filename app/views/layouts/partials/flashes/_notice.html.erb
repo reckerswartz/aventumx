@@ -1,8 +1,9 @@
+<% datetime = local_assigns.fetch(:datetime, DateTime.now) %>
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <i class="fa-regular fa-bell me-2"></i>
-    <strong class="me-auto">Bootstrap</strong>
-    <small class="text-muted">just now</small>
+    <strong class="me-auto">Notice</strong>
+    <small class="text-muted"><time class="timeago" datetime="<%= datetime.iso8601 %>"></time></small>
     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
   <div class="toast-body">
