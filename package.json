@@ -42,6 +42,6 @@
     "start-dev": "webpack-dev-server --config=webpack.config.dev.js"
   },
   "devDependencies": {
-    "webpack-dev-server": "^4.11.0"
+    "webpack-dev-server": "^4.11.1"
   }
 }
