@@ -342,7 +342,7 @@ group :development do
   # Read more: https://docs.rubocop.org/
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
-  gem 'rubocop-rails', '~> 2.15'
+  gem 'rubocop-rails', '~> 2.16'
   gem 'rubocop-rspec', '~> 2.12', require: false
 
   # Shoulda Matchers provides RSpec- and Minitest-compatible
