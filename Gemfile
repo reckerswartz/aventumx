@@ -267,7 +267,7 @@ group :development, :test, :staging do
 
   # easily generate fake data: names, addresses, phone numbers, etc.
   # Read more: https://github.com/stympy/faker
-  gem 'faker', '~> 2.22'
+  gem 'faker', '~> 2.23'
 end
 
 group :development do
@@ -340,7 +340,7 @@ group :development do
 
   # Automatic Ruby code style checking tool
   # Read more: https://docs.rubocop.org/
-  gem 'rubocop', '~> 1.35', require: false
+  gem 'rubocop', '~> 1.36', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.16'
   gem 'rubocop-rspec', '~> 2.13', require: false
