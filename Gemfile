@@ -343,7 +343,7 @@ group :development do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.16'
-  gem 'rubocop-rspec', '~> 2.12', require: false
+  gem 'rubocop-rspec', '~> 2.13', require: false
 
   # Shoulda Matchers provides RSpec- and Minitest-compatible
   # one-liners to test common Rails functionality that
