@@ -8,7 +8,7 @@ ruby '3.1.2'
 group :production, :staging, :development, :test do
   # Validations for Active Storage (presence)
   # Read more: https://github.com/igorkasyanchuk/active_storage_validations
-  gem 'active_storage_validations', '~> 0.9.8'
+  gem 'active_storage_validations', '~> 1.0.0'
 
   # Simple, powerful, first-party analytics for Rails
   # Read more: https://github.com/ankane/ahoy
