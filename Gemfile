@@ -267,7 +267,7 @@ group :development, :test, :staging do
 
   # easily generate fake data: names, addresses, phone numbers, etc.
   # Read more: https://github.com/stympy/faker
-  gem 'faker', '~> 2.22'
+  gem 'faker', '~> 2.23'
 end
 
 group :development do
