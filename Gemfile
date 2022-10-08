@@ -8,7 +8,7 @@ ruby '3.1.2'
 group :production, :staging, :development, :test do
   # Validations for Active Storage (presence)
   # Read more: https://github.com/igorkasyanchuk/active_storage_validations
-  gem 'active_storage_validations', '~> 0.9.8'
+  gem 'active_storage_validations', '~> 1.0.0'
 
   # Simple, powerful, first-party analytics for Rails
   # Read more: https://github.com/ankane/ahoy
@@ -168,7 +168,7 @@ group :production, :staging, :development, :test do
   # Google libphonenumber library was taken as a basis for this gem.
   # Gem uses its data file for validations and number formatting.
   # Read more: https://github.com/daddyz/phonelib
-  gem 'phonelib', '~> 0.7.1'
+  gem 'phonelib', '~> 0.7.3'
 
   # Fast, Nimble PDF Writer for Ruby
   # Read more: https://github.com/prawnpdf/prawn
@@ -340,7 +340,7 @@ group :development do
 
   # Automatic Ruby code style checking tool
   # Read more: https://docs.rubocop.org/
-  gem 'rubocop', '~> 1.35', require: false
+  gem 'rubocop', '~> 1.36', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.16'
   gem 'rubocop-rspec', '~> 2.13', require: false
