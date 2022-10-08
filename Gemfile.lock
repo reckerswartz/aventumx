@@ -476,7 +476,7 @@ GEM
     randexp (0.1.7)
     rash_alt (0.4.12)
       hashie (>= 3.4)
-    rbs (2.6.0)
+    rbs (2.7.0)
     rbtree (0.4.5)
     rbtree3 (0.7.0)
     redis (5.0.2)
