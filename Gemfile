@@ -348,7 +348,7 @@ group :development do
   # Shoulda Matchers provides RSpec- and Minitest-compatible
   # one-liners to test common Rails functionality that
   # Read more: https://github.com/thoughtbot/shoulda-matchers
-  gem 'shoulda-matchers', '~> 5.1'
+  gem 'shoulda-matchers', '~> 5.2'
 
   # Catch unsafe migrations at dev time
   # Read more: http://www.rubydoc.info/gems/strong_migrations/
