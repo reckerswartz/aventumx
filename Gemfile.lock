@@ -254,7 +254,7 @@ GEM
     ffi (1.15.5)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
-    geocoder (1.8.0)
+    geocoder (1.8.1)
     gitlab (4.19.0)
       httparty (~> 0.20)
       terminal-table (>= 1.5.1)
