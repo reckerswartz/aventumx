@@ -194,8 +194,8 @@ GEM
       sorted_set (~> 1.0)
     chartkick (4.2.1)
     chunky_png (1.4.0)
-    client_side_validations (20.0.2)
-      js_regex (~> 3.1)
+    client_side_validations (21.0.0)
+      js_regex (~> 3.7)
       rails (>= 5.2, < 7.1)
     cocoon (1.2.15)
     code_analyzer (0.5.5)
@@ -223,7 +223,6 @@ GEM
     devise-security (0.17.0)
       devise (>= 4.3.0)
     diff-lcs (1.5.0)
-    digest (3.1.0)
     discard (1.2.1)
       activerecord (>= 4.2, < 8)
     down (5.3.1)
@@ -341,10 +340,8 @@ GEM
       timeout
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-smtp (0.3.1)
-      digest
+    net-smtp (0.3.2)
       net-protocol
-      timeout
     net-ssh (7.0.1)
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-linux)
@@ -647,7 +644,7 @@ DEPENDENCIES
   capistrano-rake (~> 0.2.0)
   capistrano-rvm (~> 0.1.2)
   chartkick (~> 4.2)
-  client_side_validations (~> 20.0, >= 20.0.2)
+  client_side_validations (~> 21.0)
   cocoon (~> 1.2, >= 1.2.15)
   countries (~> 5.1)
   cssbundling-rails (~> 1.1)

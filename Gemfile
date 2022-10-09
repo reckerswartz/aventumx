@@ -61,7 +61,7 @@ group :production, :staging, :development, :test do
 
   # Client Side Validations
   # Read more: https://github.com/DavyJonesLocker/client_side_validations
-  gem 'client_side_validations', '~> 20.0', '>= 20.0.2'
+  gem 'client_side_validations', '~> 21.0'
 
   # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
   gem 'cssbundling-rails', '~> 1.1'
