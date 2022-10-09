@@ -478,8 +478,8 @@ GEM
     rbs (2.7.0)
     rbtree (0.4.5)
     rbtree3 (0.7.0)
-    redis (5.0.2)
-      redis-client (~> 0.7)
+    redis (5.0.5)
+      redis-client (>= 0.9.0)
     redis-client (0.9.0)
       connection_pool
     reek (6.1.1)
