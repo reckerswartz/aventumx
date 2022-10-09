@@ -168,7 +168,7 @@ group :production, :staging, :development, :test do
   # Google libphonenumber library was taken as a basis for this gem.
   # Gem uses its data file for validations and number formatting.
   # Read more: https://github.com/daddyz/phonelib
-  gem 'phonelib', '~> 0.7.1'
+  gem 'phonelib', '~> 0.7.3'
 
   # Fast, Nimble PDF Writer for Ruby
   # Read more: https://github.com/prawnpdf/prawn
