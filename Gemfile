@@ -231,7 +231,7 @@ group :production, :staging, :development, :test do
   gem 'timezone', '~> 1.3'
 
   # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-  gem 'turbo-rails', '~> 1.1'
+  gem 'turbo-rails', '~> 1.3'
 
   # ### Features ### * control sms code pattern * configure max login attempts *
   # per user level control if he really need two factor authentication * your own sms logic
