@@ -336,7 +336,7 @@ group :development do
 
   # rspec-rails is a testing framework for Rails
   # Read more: https://github.com/rspec/rspec-rails
-  gem 'rspec-rails', '~> 5.1'
+  gem 'rspec-rails', '~> 6.0'
 
   # Automatic Ruby code style checking tool
   # Read more: https://docs.rubocop.org/
