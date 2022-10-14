@@ -263,7 +263,7 @@ GEM
     groupdate (6.1.0)
       activesupport (>= 5.2)
     haikunator (1.1.1)
-    haml (6.0.6)
+    haml (6.0.7)
       temple (>= 0.8.2)
       thor
       tilt
