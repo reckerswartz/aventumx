@@ -176,7 +176,7 @@ group :production, :staging, :development, :test do
 
   # Use Puma as the app server
   # Read more: http://puma.io/
-  gem 'puma', '~> 5.6'
+  gem 'puma', '~> 6.0'
 
   # Object oriented authorization for Rails applications
   # Read more: https://github.com/varvet/pundit
