@@ -384,7 +384,7 @@ GEM
       syntax_tree (>= 2.7.1)
       syntax_tree-haml (>= 1.1.0)
       syntax_tree-rbs (>= 0.2.0)
-    prettier_print (1.0.1)
+    prettier_print (1.0.2)
     pronto (0.11.0)
       gitlab (~> 4.4, >= 4.4.0)
       httparty (>= 0.13.7)
