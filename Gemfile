@@ -38,7 +38,7 @@ group :production, :staging, :development, :test do
 
   # AWS Ruby gem for Amazon Simple Storage Service
   # Read more: https://github.com/aws/aws-sdk-ruby
-  gem 'aws-sdk-s3', '~> 1.114'
+  gem 'aws-sdk-s3', '~> 1.116'
 
   # to optimize and cache expensive computations
   # Read more: https://github.com/Shopify/bootsnap
