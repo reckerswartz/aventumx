@@ -20,7 +20,7 @@
     "@rails/request.js": "^0.0.6",
     "@tkrotoff/bootstrap-floating-label": "^0.11.5",
     "animate.css": "^4.1.1",
-    "autoprefixer": "^10.4.12",
+    "autoprefixer": "^10.4.13",
     "bootstrap": "^5.2.2",
     "datatables.net-bs5": "^1.12.1",
     "file-loader": "^6.2.0",
