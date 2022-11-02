@@ -606,7 +606,7 @@ GEM
     valid_email2 (4.0.4)
       activemodel (>= 3.2)
       mail (~> 2.5)
-    version_gem (1.1.0)
+    version_gem (1.1.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
