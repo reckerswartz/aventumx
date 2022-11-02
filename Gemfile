@@ -218,7 +218,7 @@ group :production, :staging, :development, :test do
 
   # Simple, efficient background processing for Ruby
   # Read more: http://sidekiq.org/
-  gem 'sidekiq', '~> 6.5'
+  gem 'sidekiq', '~> 7.0'
 
   # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
   gem 'sprockets-rails', '~> 3.4', '>= 3.4.2'
