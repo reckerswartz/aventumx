@@ -54,7 +54,7 @@ group :production, :staging, :development, :test do
 
   # All sorts of useful information about every country packaged
   # Read more: https://github.com/countries/countries
-  gem 'countries', '~> 5.1'
+  gem 'countries', '~> 5.2'
 
   # Create beautiful JavaScript charts with one line of Ruby
   gem 'chartkick', '~> 4.2'

@@ -202,8 +202,8 @@ GEM
       sexp_processor
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
-    countries (5.1.2)
-      sixarm_ruby_unaccent (~> 1.1)
+    countries (5.2.0)
+      unaccent (~> 0.3)
     crass (1.0.6)
     cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
@@ -559,7 +559,6 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.9.0)
-    sixarm_ruby_unaccent (1.2.0)
     smart_properties (1.17.0)
     snaky_hash (2.0.1)
       hashie
@@ -603,6 +602,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    unaccent (0.4.0)
     unicode-display_width (2.3.0)
     uniform_notifier (1.16.0)
     valid_email2 (4.0.4)
@@ -648,7 +648,7 @@ DEPENDENCIES
   chartkick (~> 4.2)
   client_side_validations (~> 21.0)
   cocoon (~> 1.2, >= 1.2.15)
-  countries (~> 5.1)
+  countries (~> 5.2)
   cssbundling-rails (~> 1.1)
   debug
   devise (~> 4.8, >= 4.8.1)
