@@ -27,7 +27,7 @@
     "jquery": "^3.6.1",
     "roboto-fontface": "^0.10.0",
     "sass": "^1.56.1",
-    "sass-loader": "^13.1.0",
+    "sass-loader": "^13.2.0",
     "select2": "^4.1.0-rc.0",
     "sweetalert2": "^11.6.8",
     "timeago": "^1.6.7",
