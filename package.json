@@ -17,7 +17,7 @@
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^7.0.4",
     "@rails/actiontext": "^7.0.4",
-    "@rails/request.js": "^0.0.6",
+    "@rails/request.js": "^0.0.8",
     "@tkrotoff/bootstrap-floating-label": "^0.11.5",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.13",
