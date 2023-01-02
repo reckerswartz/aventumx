@@ -315,7 +315,7 @@ group :development do
   gem 'pronto-erb_lint', github: 'tleish/pronto-erb_lint', require: false
   gem 'pronto-rails_best_practices', '~> 0.11.0', require: false
   gem 'pronto-reek', '~> 0.11.0', require: false
-  gem 'pronto-rubocop', '~> 0.11.2', require: false
+  gem 'pronto-rubocop', '~> 0.11.4', require: false
   gem 'pronto-stylelint', '~> 0.10.2', require: false
 
   # Display performance information such as SQL time and flame graphs for each request in your browser.
